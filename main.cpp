@@ -3,7 +3,7 @@
 #include "sfwdraw.h"
 #include "Quit.h"
 #include "MainMenu.h"
-#include <cstdio>
+
 
 
 
@@ -19,9 +19,11 @@ void main()
 	Splash.init(font);
 	quit.init(font);
 	menu.init(font);
+
 	APP_STATE state = ENTERSPLASH;
-	bool quit = false;
-	while (sfw::stepContext() && !quit)
+
+	bool quit1 = false;
+	while (sfw::stepContext() && !quit1)
 	{
 		switch (state)
 		{
@@ -45,7 +47,8 @@ void main()
 			menu.step();
 			menu.draw();
 			state = menu.next();
-		case TERMINATE: quit = true;
+			break;
+		case TERMINATE: quit1 = true;
 		}
 	}
 
